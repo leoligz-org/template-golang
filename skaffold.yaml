@@ -1,0 +1,17 @@
+apiVersion: skaffold/v4beta11
+kind: Config
+build:
+  local:
+    push: false
+  artifacts:
+  - image: skaffold-helm
+manifests:
+  helm:
+    releases:
+    - name: skaffold-helm
+      chartPath: charts
+      namespace: skaffold
+      setValues:
+        image: skaffold-helm
+      valuesFiles:
+      - charts/values.yaml
