@@ -7,7 +7,7 @@ on:
       - '*'           # Push events to every tag not containing /
 
 jobs:
-  build:
+  reusable-build-workflows:
     uses: leoligz-org/reusable-workflows/.github/workflows/release-image.yml@feat/workflow-call
     secrets: inherit # This passes all available secrets to the called workflow
     permissions:
