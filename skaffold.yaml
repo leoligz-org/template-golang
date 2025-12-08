@@ -1,17 +1,29 @@
+# export TAG=v0.0.1
+# skaffold build --file-output output/build-$STATE.json
+# skaffold render -a output/build-$STATE.json --output output/render.yaml --digest-source local
 apiVersion: skaffold/v4beta11
 kind: Config
 build:
-  local:
-    push: false
+  platforms: ["linux/amd64"]
+  # local:
+  #   push: false
+  cluster:
+    concurrency: 0
+    pullSecretName: pre-defined-secret
+    pullSecretPath: github_token
+    randomDockerConfigSecret: false
+    randomPullSecret: false
+  tagPolicy:
+    envTemplate:
+      template: "{{.TAG}}"
   artifacts:
-  - image: skaffold-helm
+  - image: leoligz/hello-world
 manifests:
   helm:
     releases:
-    - name: skaffold-helm
+    - name: hello-world
       chartPath: charts
-      namespace: skaffold
-      setValues:
-        image: skaffold-helm
+      setValueTemplates:
+        image: "{{.IMAGE_FULLY_QUALIFIED_leoligz_hello_world}}"
       valuesFiles:
       - charts/values.yaml
