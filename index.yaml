@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  skaffold-helm:
+  - apiVersion: v2
+    appVersion: 0.1.0
+    created: "2025-12-09T02:42:18.640063929Z"
+    description: Skaffold example with Helm
+    digest: dc213545e65c41c471072ae47c27c174c7bc012c504bd0203a30ad4357b9a5fd
+    name: skaffold-helm
+    type: application
+    urls:
+    - https://github.com/leoligz-org/template-golang/releases/download/skaffold-helm-0.1.0/skaffold-helm-0.1.0.tgz
+    version: 0.1.0
+generated: "2025-12-09T02:42:18.640068869Z"
